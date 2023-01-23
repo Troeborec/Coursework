@@ -1,26 +1,36 @@
+import java.util.Scanner;
+
 public class Main {
     static Employee[] employees = new Employee[10];
+    int count = 0;
+    int minDepSalary = 1_000_000;
+    int maxDepSalary = 0;
+    private Employee employeeWithMinSalary;
     static int size = 0;  // это для заполнения массива с 0 ячейки
 
     public static void addEmployee(String name, int department, int salary) {
-        Employee employee1 = new Employee(name, department, salary); //создание нового жкземпляра класса Employee
-        employees[size++] = employee1; //чтобы индекс на 1 увеличивался
+        Employee employee = new Employee(name, department, salary); //создание нового жкземпляра класса Employee
+        employees[size++] = employee; //чтобы индекс на 1 увеличивался
+    }
+
+    public static void printLine() {
+        System.out.println("/////////////////////");
     }
 
     public static void minSalary() {
-        double minSalary = employees[0].getSalary();
+        int minSalary = employees[0].getSalary();
         String name = null;
         for (int i = 0; i < employees.length; i++) {
             if (minSalary >= employees[i].getSalary()) {
                 minSalary = employees[i].getSalary();
                 name = employees[i].getName();
             }
-            }
-        System.out.println("Минимальная Зарплата = " + minSalary + " Имя: " + name);
         }
+        System.out.println("Минимальная Зарплата = " + minSalary + " Имя: " + name);
+    }
 
     public static void maxSalary() {
-        double maxSalary = employees[0].getSalary();
+        int maxSalary = employees[0].getSalary();
         String name1 = null;
         for (int i = 0; i < employees.length; i++) {
             if (maxSalary < employees[i].getSalary()) {
@@ -38,22 +48,22 @@ public class Main {
         }
     }
 
-//    Cумма затррат на зарплаты
+    //    Cумма затррат на зарплаты
     public static void printCashMonth() {
-        double summ = 0;
+        int summ = 0;
         for (int i = 0; i < employees.length; i++) {
             summ += employees[i].getSalary();
         }
         System.out.println("ЗАТРАТЫ " + summ);
-        }
+    }
 
     public static void printAverageValue() {
-        double averageVakue = 0;
+        int averageValue = 0;
         for (int i = 0; i < employees.length; i++) {
-            averageVakue += employees[i].getSalary();
-            averageVakue = averageVakue / employees[i].getId();
+            averageValue += employees[i].getSalary();
+            averageValue = averageValue;
         }
-        System.out.println("Среднее значение " + averageVakue);
+        System.out.println("Среднее значение " + averageValue);
     }
 
     public static void printAllName() {
@@ -62,6 +72,20 @@ public class Main {
         }
     }
 
+    ///Минимальная зп
+    public static void printMinSalaryInDep(int department) {
+        int minDepSalary = 1_000_000;
+        int arr = 0;
+        for (int i = 0; i < employees.length; i++) {
+            Employee employee = employees[i];
+            if (employee.getDepartment() == department) {
+                if (minDepSalary > employee.getSalary()) {
+                    minDepSalary = employee.getSalary();
+                    //    arr = employee.getName();
+                }
+            }
+        }
+    }
 
     public static void main(String[] args) {
         addEmployee("Иван Иванов Иванович", 1, 10_000);
@@ -74,13 +98,19 @@ public class Main {
         addEmployee("Жора Жоров Жорович", 4, 80_000);
         addEmployee("Зеня Зенов Зенович", 5, 90_000);
         addEmployee("Ибрагим Ибрагимов Ибрагимович", 5, 100_000);
+
+        //Базовая часть
+        printLine();
+        System.out.println("Базовая часть");
         printAllEmployee();
         minSalary();
         maxSalary();
         printCashMonth();
         printAverageValue();
         printAllName();
-
-
+        printLine();
+        //Повышенная сложность
+        System.out.println("ПОВЫШЕННАЯ СЛОЖНОСТЬ");
+        //employees.find
     }
 }

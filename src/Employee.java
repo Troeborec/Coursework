@@ -1,15 +1,15 @@
 public class Employee {
-  private String name;
-  private int department;
-  private int id;
-  private double salary;
+    private String name;
+    private int department;
+    private int id;
+    private int salary;
     static int count = 0;
 
     public Employee(String name, int department, int salary) {
         this.name = name;
         this.department = department;
         this.salary = salary;
-        count += 1;
+        count++;
         this.id = count;
     }
 
@@ -17,11 +17,12 @@ public class Employee {
         return this.name;
     }
 
+
     public int getDepartment() {
         return this.department;
     }
 
-    public double getSalary() {
+    public int getSalary() {
         return this.salary;
     }
 
@@ -41,5 +42,7 @@ public class Employee {
     public String toString() {
         return "Имя: " + name + "\n" + "Отдел: " + department + "\n" + "ЗП: " + salary + "\n" + "////////////////";
     }
-
+    public String toStringDep() {
+        return  "Имя: " + name + "\n" + "ЗП: " + salary + "\n" + "////////////////";
+    }
 }
