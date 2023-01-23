@@ -58,12 +58,12 @@ public class Main {
     }
 
     public static void printAverageValue() {
-        int averageValue = 0;
+        int averageSalary = 0;
         for (int i = 0; i < employees.length; i++) {
-            averageValue += employees[i].getSalary();
-            averageValue = averageValue;
+            averageSalary += employees[i].getSalary();
+            averageSalary = averageSalary / size;
         }
-        System.out.println("Среднее значение " + averageValue);
+        System.out.println("Среднее значение " + averageSalary);
     }
 
     public static void printAllName() {
@@ -86,7 +86,6 @@ public class Main {
             }
         }
     }
-
     public static void main(String[] args) {
         addEmployee("Иван Иванов Иванович", 1, 10_000);
         addEmployee("Борис Борисов Борисович", 1, 20_000);
