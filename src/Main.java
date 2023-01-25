@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Main {
     static Employee[] employees = new Employee[10];
     int count = 0;
@@ -61,8 +59,8 @@ public class Main {
         int averageSalary = 0;
         for (int i = 0; i < employees.length; i++) {
             averageSalary += employees[i].getSalary();
-            averageSalary = averageSalary / size;
         }
+        averageSalary = averageSalary / size;
         System.out.println("Среднее значение " + averageSalary);
     }
 
@@ -72,20 +70,26 @@ public class Main {
         }
     }
 
+
     ///Минимальная зп
-    public static void printMinSalaryInDep(int department) {
-        int minDepSalary = 1_000_000;
+    public static void printMinSalaryDep(int department) {
+        int dep = 0;
+        String name = null;
         int arr = 0;
+        int minDepSalary = 1_000_000;
+        int minSalary = employees[0].getSalary();
         for (int i = 0; i < employees.length; i++) {
-            Employee employee = employees[i];
-            if (employee.getDepartment() == department) {
-                if (minDepSalary > employee.getSalary()) {
-                    minDepSalary = employee.getSalary();
-                    //    arr = employee.getName();
+            if (employees[i].getDepartment() == department) {
+                name = employees[i].getName();
+            if (minSalary < employees[i].getSalary()) {
+                minSalary = employees[i].getSalary();
                 }
             }
         }
+        System.out.println("Имя = " + name + "Минимальная зп" + " " + minSalary);
     }
+
+
     public static void main(String[] args) {
         addEmployee("Иван Иванов Иванович", 1, 10_000);
         addEmployee("Борис Борисов Борисович", 1, 20_000);
@@ -97,7 +101,6 @@ public class Main {
         addEmployee("Жора Жоров Жорович", 4, 80_000);
         addEmployee("Зеня Зенов Зенович", 5, 90_000);
         addEmployee("Ибрагим Ибрагимов Ибрагимович", 5, 100_000);
-
         //Базовая часть
         printLine();
         System.out.println("Базовая часть");
@@ -110,6 +113,7 @@ public class Main {
         printLine();
         //Повышенная сложность
         System.out.println("ПОВЫШЕННАЯ СЛОЖНОСТЬ");
-        //employees.find
+        int department = 0;
+        printMinSalaryDep(1);
     }
 }

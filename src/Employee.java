@@ -1,16 +1,21 @@
 public class Employee {
-    private String name;
+    Employee[] employee = new Employee[10];
+    private final  String name;
     private int department;
     private int id;
     private int salary;
-    static int count = 0;
+    public static int count = 0;
 
     public Employee(String name, int department, int salary) {
         this.name = name;
         this.department = department;
         this.salary = salary;
-        count++;
+        count += 1;
         this.id = count;
+    }
+
+    public int getId() {
+        return this.id;
     }
 
     public String getName() {
@@ -26,10 +31,6 @@ public class Employee {
         return this.salary;
     }
 
-    public int getId() {
-        return this.id;
-    }
-
     public void setDepartment(int department) {
         this.department = department;
     }
@@ -40,9 +41,6 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Имя: " + name + "\n" + "Отдел: " + department + "\n" + "ЗП: " + salary + "\n" + "////////////////";
-    }
-    public String toStringDep() {
-        return  "Имя: " + name + "\n" + "ЗП: " + salary + "\n" + "////////////////";
+        return "Имя " + this.name + "\n" + "Отдел " + this.department + "\n" + "Зарплата " + this.salary + "\n" + "id " + this.getId() + "\n" + "============" ;
     }
 }
