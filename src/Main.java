@@ -73,20 +73,16 @@ public class Main {
 
     ///Минимальная зп
     public static void printMinSalaryDep(int department) {
-        int dep = 0;
-        String name = null;
-        int arr = 0;
+        Employee employee = employees[0];
         int minDepSalary = 1_000_000;
         int minSalary = employees[0].getSalary();
         for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getDepartment() == department) {
-                name = employees[i].getName();
-            if (minSalary < employees[i].getSalary()) {
-                minSalary = employees[i].getSalary();
-                }
+            if (employees[i].getDepartment() == department && employees[i].getSalary() < minDepSalary) {
+                employee = employees[i];
+                minDepSalary = employees[i].getSalary();
             }
         }
-        System.out.println("Имя = " + name + "Минимальная зп" + " " + minSalary);
+        System.out.println("Сотрудник " + employee.getName() + " Отдел " + employee.getDepartment() + " Мин зп " + employee.getSalary());
     }
 
 
